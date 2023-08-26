@@ -43,7 +43,7 @@ public class QuestionAnswerServiceImpl implements QuestionAnswerService, OptionS
         List<Options> optionsListForEachQuestionAnswerId;
         result.forEach(QuestionAnswerList->{
             QuestionAnswerList obj = new QuestionAnswerList();
-            obj.setOptions(optionsRepository.getAllOptionsForGivenQuestionId(QuestionAnswerList.getQuestionAnswerListId()));
+            obj.setOptions(optionsRepository.getAllOptionsForGivenQuestionId(QuestionAnswerList.getQuestionAnswerId()));
         });
         return result;
     }

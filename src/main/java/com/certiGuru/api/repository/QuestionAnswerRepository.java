@@ -12,6 +12,6 @@ import static com.certiGuru.api.Constants.SELECT_QUERY_FOR_GETTING_ALL_QUESTIONS
 
 public interface QuestionAnswerRepository extends JpaRepository<QuestionAnswerList, Long>{
 
-    @Query(value = "SELECT_QUERY_FOR_GETTING_ALL_QUESTIONS",nativeQuery = true)
+    @Query(value = SELECT_QUERY_FOR_GETTING_ALL_QUESTIONS,nativeQuery = true)
     public List<QuestionAnswerList> getAllQuestions();
 }

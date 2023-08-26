@@ -13,14 +13,14 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name="questionAnswerList")
+@Table(name="questionAnswerTable")
 public class QuestionAnswerList {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long questionAnswerListId;
+    private long questionAnswerId;
 
-    @Column(name="questions")
-    private String questions;
+    @Column(name="question")
+    private String question;
 
     @Column(name="type")
     private  String type;
@@ -35,7 +35,7 @@ public class QuestionAnswerList {
     private String references;
 
     @OneToMany(targetEntity = Options.class,cascade=CascadeType.ALL)
-    @JoinColumn(name="questionOptions_fk",referencedColumnName = "questionAnswerListId")
+    @JoinColumn(name="questionOptions_fk",referencedColumnName = "questionAnswerId")
     private List<Options> options;
 
 }
