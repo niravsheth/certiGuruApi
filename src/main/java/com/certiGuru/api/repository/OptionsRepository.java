@@ -11,10 +11,10 @@ import java.util.List;
 
 import static com.certiGuru.api.Constants.SELECT_QUERY_FOR_GETTING_ALL_OPTIONS_FOR_GIVEN_QUESTION_ID;
 
-public interface OptionsRepository {
+public interface OptionsRepository extends JpaRepository<Options, Long> {
 
 
-    @Query(SELECT_QUERY_FOR_GETTING_ALL_OPTIONS_FOR_GIVEN_QUESTION_ID)
+    @Query(value = "SELECT_QUERY_FOR_GETTING_ALL_OPTIONS_FOR_GIVEN_QUESTION_ID",nativeQuery = true)
     public List<Options> getAllOptionsForGivenQuestionId(@Param("q")Long questionAnswerListId);
 
 

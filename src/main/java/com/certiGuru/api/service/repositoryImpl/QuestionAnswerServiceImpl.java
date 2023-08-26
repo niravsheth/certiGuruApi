@@ -1,7 +1,7 @@
-package com.certiGuru.api.repositoryImpl;
+package com.certiGuru.api.service.repositoryImpl;
 
-import com.certiGuru.api.OptionService;
-import com.certiGuru.api.QuestionAnswerService;
+import com.certiGuru.api.service.OptionService;
+import com.certiGuru.api.service.QuestionAnswerService;
 import com.certiGuru.api.model.Options;
 import com.certiGuru.api.model.QuestionAnswerList;
 import com.certiGuru.api.repository.OptionsRepository;
@@ -13,19 +13,21 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
-public class QuestionAnswerRepositoryImpl implements QuestionAnswerService, OptionService {
+public class QuestionAnswerServiceImpl implements QuestionAnswerService, OptionService {
 
     private QuestionAnswerRepository questionAnswerRepository;
 
-    public QuestionAnswerRepositoryImpl (QuestionAnswerRepository questionAnswerRepository) {
-        this.questionAnswerRepository = questionAnswerRepository;
-    }
-
-    @Autowired
     private OptionsRepository optionsRepository;
 
+    public QuestionAnswerServiceImpl (QuestionAnswerRepository questionAnswerRepository,OptionsRepository optionsRepository) {
+        super();
+        this.questionAnswerRepository = questionAnswerRepository;
+        this.optionsRepository = optionsRepository;
+    }
+
+    @Override
     public List<QuestionAnswerList> getAllQuestions(){
-        List<QuestionAnswerList> questionAnswerList= questionAnswerRepository.getAllQuestions();
+        List<QuestionAnswerList> questionAnswerList = questionAnswerRepository.getAllQuestions();
         if(questionAnswerList.size()>0){
             return questionAnswerList;
         }
@@ -35,7 +37,7 @@ public class QuestionAnswerRepositoryImpl implements QuestionAnswerService, Opti
     }
 
 
-
+    @Override
     public List<QuestionAnswerList> getAllQuestionAnswerListWithOptions() {
         List<QuestionAnswerList> result = getAllQuestions();
         List<Options> optionsListForEachQuestionAnswerId;

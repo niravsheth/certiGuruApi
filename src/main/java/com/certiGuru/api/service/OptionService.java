@@ -1,4 +1,4 @@
-package com.certiGuru.api;
+package com.certiGuru.api.service;
 
 import com.certiGuru.api.model.Options;
 import org.springframework.data.repository.query.Param;
