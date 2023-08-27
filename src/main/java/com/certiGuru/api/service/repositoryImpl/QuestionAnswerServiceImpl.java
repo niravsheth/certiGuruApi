@@ -3,7 +3,7 @@ package com.certiGuru.api.service.repositoryImpl;
 import com.certiGuru.api.service.OptionService;
 import com.certiGuru.api.service.QuestionAnswerService;
 import com.certiGuru.api.model.Options;
-import com.certiGuru.api.model.QuestionAnswerList;
+import com.certiGuru.api.model.QuestionAnswerTable;
 import com.certiGuru.api.repository.OptionsRepository;
 import com.certiGuru.api.repository.QuestionAnswerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
-public class QuestionAnswerServiceImpl implements QuestionAnswerService, OptionService {
+public class QuestionAnswerServiceImpl implements QuestionAnswerService {
 
     private QuestionAnswerRepository questionAnswerRepository;
 
@@ -23,13 +23,14 @@ public class QuestionAnswerServiceImpl implements QuestionAnswerService, OptionS
         super();
         this.questionAnswerRepository = questionAnswerRepository;
         this.optionsRepository = optionsRepository;
+
     }
 
     @Override
-    public List<QuestionAnswerList> getAllQuestions(){
-        List<QuestionAnswerList> questionAnswerList = questionAnswerRepository.getAllQuestions();
-        if(questionAnswerList.size()>0){
-            return questionAnswerList;
+    public List<QuestionAnswerTable> getAllQuestions(){
+        List<QuestionAnswerTable> questionAnswerTable = questionAnswerRepository.getAllQuestions();
+        if(questionAnswerTable.size()>0){
+            return questionAnswerTable;
         }
         else {
             return new ArrayList<>();
@@ -38,18 +39,16 @@ public class QuestionAnswerServiceImpl implements QuestionAnswerService, OptionS
 
 
     @Override
-    public List<QuestionAnswerList> getAllQuestionAnswerListWithOptions() {
-        List<QuestionAnswerList> result = getAllQuestions();
-        List<Options> optionsListForEachQuestionAnswerId;
+    public List<QuestionAnswerTable> getAllQuestionAnswerListWithOptions() {
+        List<QuestionAnswerTable> result = getAllQuestions();
+
+        //List<Options> optionsListForEachQuestionAnswerId;
         result.forEach(QuestionAnswerList->{
-            QuestionAnswerList obj = new QuestionAnswerList();
-            obj.setOptions(optionsRepository.getAllOptionsForGivenQuestionId(QuestionAnswerList.getQuestionAnswerId()));
+            QuestionAnswerTable obj = new QuestionAnswerTable();
+            obj.setOptions(optionsRepository.getAllOptionsForGivenQuestionId(QuestionAnswerList.getQuestion_answer_Id()));
         });
         return result;
+        //return null;
     }
 
-    @Override
-    public List<Options> getAllOptionsForGivenQuestionId(Long questionAnswerListId) {
-        return null;
-    }
 }

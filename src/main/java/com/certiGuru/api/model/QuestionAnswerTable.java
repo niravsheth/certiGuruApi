@@ -13,11 +13,11 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name="questionAnswerTable")
-public class QuestionAnswerList {
+@Table(name="question_answer_table")
+public class QuestionAnswerTable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long questionAnswerId;
+    private long question_answer_Id;
 
     @Column(name="question")
     private String question;
@@ -35,7 +35,7 @@ public class QuestionAnswerList {
     private String references;
 
     @OneToMany(targetEntity = Options.class,cascade=CascadeType.ALL)
-    @JoinColumn(name="questionOptions_fk",referencedColumnName = "questionAnswerId")
+    @JoinColumn(name="questionOptions_fk",referencedColumnName = "question_answer_Id")
     private List<Options> options;
 
 }

@@ -7,5 +7,6 @@ import java.util.List;
 
 public interface OptionService {
     public List<Options> getAllOptionsForGivenQuestionId(Long questionAnswerListId);
+    public List<Options> getAllOptions();
 
 }
