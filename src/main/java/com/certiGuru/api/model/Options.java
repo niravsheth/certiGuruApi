@@ -17,25 +17,10 @@ public class Options {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @Column(name="option1")
-    private  String option1;
+    @Column(name="option_value")
+    private  String optionValue;
 
-    @Column(name="option2")
-    private  String option2;
-
-    @Column(name="option3")
-    private  String option3;
-
-    @Column(name="option4")
-    private  String option4;
-
-    @Column(name="option5")
-    private  String option5;
-
-    @Column(name="option6")
-    private  String option6;
-
-    @Column(name="isCorrect")
+    @Column(name="is_correct")
     private boolean isCorrect;
 
 }
